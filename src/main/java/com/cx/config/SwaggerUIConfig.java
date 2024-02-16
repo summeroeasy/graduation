@@ -12,6 +12,7 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.ApiKey;
+import springfox.documentation.service.SecurityScheme;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -34,19 +35,19 @@ public class SwaggerUIConfig {
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build()
-                .securitySchemes(securitySchemes());
+                .securitySchemes(securitySchemeList());
     }
     //在页定义面上显示的标题信息
     public ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("Swagger-UI Test")
+                .title("毕业设计管理系统")
                 .version("1.0")
-                .description("CRUD")
+                .description("毕业设计管理系统接口文档")
                 .build();
     }
-    private List<ApiKey> securitySchemes(){
+    private List<SecurityScheme> securitySchemeList(){
         //设置请求头信息
-        List<ApiKey> result=new ArrayList<>();
+        List<SecurityScheme> result=new ArrayList<>();
         ApiKey apiKey=new ApiKey("satoken","satoken","header");
         result.add(apiKey);
         return result;
